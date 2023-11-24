@@ -1,0 +1,135 @@
+# ██╗░░██╗██╗████████╗  ██████╗░██╗░░░██╗██████╗░
+# ██║░██╔╝██║╚══██╔══╝  ██╔══██╗██║░░░██║██╔══██╗
+# █████═╝░██║░░░██║░░░  ██████╔╝╚██╗░██╔╝██████╔╝
+# ██╔═██╗░██║░░░██║░░░  ██╔═══╝░░╚████╔╝░██╔═══╝░
+# ██║░╚██╗██║░░░██║░░░  ██║░░░░░░░╚██╔╝░░██║░░░░░
+# ╚═╝░░╚═╝╚═╝░░░╚═╝░░░  ╚═╝░░░░░░░░╚═╝░░░╚═╝░░░░░
+# Plugin made by: Rodrigo R.
+
+mongo_db_uri: "mongodb://127.0.0.1:27017"  # MongoDB URI configuration
+prefix: "&6&lKitPvP &r&8»&7"  # Prefix used in various messages
+player_killed_msg: "%PREFIX% %VICTIM% has been killed by %KILLER%."  # Player killed message
+player_death_msg: "%PREFIX% %VICTIM% has died."  # Player death message
+kit_bought: "%PREFIX% You have bought the %KIT% Kit."  # Kit purchase message
+top_msg: "%PREFIX% Top players with the most kills (Top 10):\n%TOP%"  # Top players message
+not_enough_money: "%PREFIX% You don't have enough money to buy the &6%KIT%&7 kit."  # Insufficient money message
+kit_selected: "%PREFIX% You have selected the &6%KIT%&7 kit."  # Kit selection message
+item_name: "&bKit Selector &8- &7(Right-click)"  # Kit selector item name
+cannot_use_ability: "%PREFIX% &fOops! &7You can't use the kit ability because you recently used it. You can use it again in &7%TIME% seconds&7."  # Ability cooldown message
+on_rankup: "%PREFIX% %PLAYER% has ranked up to %RANK%."  # Player rank-up message
+chat_format: "%RANK% %luckperms_prefix%%PLAYER% &8» &7%MESSAGE%"  # Chat message format
+scoreboard:  # Scoreboard configuration
+  - "&8——— &6&lKitPvP &r&8———"  
+  - "&a"  
+  - "&6Coins: &e%COINS%"  
+  - "&6Kills: &e%KILLS%"  
+  - "&6Nick: &e%PLAYER%"  
+  - "&6Online: &e%ONLINE%/%MAX_PLAYERS%"  
+  - "&6Progress: &e%PROGRESS%/%MAX_PROGRESS%"  
+  - "&6Rank: &e%RANK%"  
+  - "&6Group: &e%luckperms_prefix%"  
+  - "&a "  
+  - "&a "  
+  - "&emc.brydget.net"
+chest_slots: 45  # Number of chest slots
+kits:  # Kit configurations
+  starter:
+    name: "Starter Kit"
+    description: "This is the starter kit for KitPvP. All players have it without exception.\n\n&eCost: &6$0.00&7."
+    display_item: "IRON_SWORD"
+    chest_slot: 10
+    effects: ""
+    price: 0
+    items:
+      armor:
+        - IRON_HELMET
+        - IRON_CHESTPLATE
+        - IRON_LEGGINGS
+        - IRON_BOOTS
+      inventory:
+        - IRON_SWORD
+    enchants:
+      sword: "DURABILITY 3"
+      helmet: "DURABILITY 3"
+      chestplate: "DURABILITY 3"
+      leggings: "DURABILITY 3"
+      boots: "DURABILITY 3"
+    ability:
+      item: BLAZE_ROD
+      name: "&6Resistance 1 &8(&a3s&8) - &7(Right-click)"
+      duration: 3
+      cooldown: 20
+      action: "effect %PLAYER% resistance 255 0 true"
+      elapsed: "effect %PLAYER% clear"
+      enabled: true
+  ender:
+    name: "Ender Kit"
+    description: "This kit gives you a stack of enderpearls to combat your enemies.\n\n&eCost: &6$800.00&7."
+    display_item: "ENDER_PEARL"
+    chest_slot: 11
+    effects: ""
+    price: 800
+    items:
+      armor:
+        - LEATHER_HELMET
+        - LEATHER_CHESTPLATE
+        - IRON_LEGGINGS
+        - IRON_BOOTS
+      inventory:
+        - IRON_SWORD
+        - ENDER_PEARL_STACK
+    enchants:
+      sword: "DURABILITY 3"
+      helmet: "DURABILITY 3"
+      chestplate: "DURABILITY 3"
+      leggings: "DURABILITY 3"
+      boots: "DURABILITY 3"
+    ability:
+      item: BLAZE_ROD
+      name: "&6Resistance 1 &8(&a3s&8) - &7(Right-click)"
+      duration: 3
+      cooldown: 20
+      action: "effect %PLAYER% resistance 255 0 true"
+      elapsed: "effect %PLAYER% clear"
+      enabled: false
+top_players_hologram:  # Top players hologram configuration
+  x: 210
+  y: 4
+  z: 364
+  world_name: "world"
+  format: "%RANK% &6%PLAYER% &7- &6%KILLS% Kills."
+  content: "&8----[ &6&lKitPvP &r&8]----\n&a Top Kills\n&a—————————————\n&r%DATA%"
+  refresh_rate: 72000  # 20 ticks = 1 second, 72000 ticks = 1 hour (refresh rate for hologram)
+  line_space: 0.25
+koth:  # King of the Hill (KOTH) configuration
+  min_players: 12
+  not_enough_players: "Not enough players to start KOTH."
+  missing_players: "&b%COUNT% players needed to start KOTH."
+  start_message: "&bKOTH has started! &cKill all players before it ends (5 minutes)."
+  starting_message: "Starting KOTH in 5 seconds..."
+  end_message: "&bKOTH has ended!"
+  stats: "%PREFIX% KOTH Statistics:\n%DATA%"
+  koth_bar: "&a%SECONDS% seconds &8- &b%POINTS% points"
+  format: "&6%PLAYER% &7- &6%KILLS% Kills&7."
+  time: 6000  # KOTH duration in ticks (20 ticks = 1 second)
+rankups:  # Player rank-up configurations
+  soldier:
+    name: "Soldier"
+    prefix: "&7[Soldier]"
+    kills: 70  # Kills needed to rank up
+    default: true
+  captain:
+    name: "Captain"
+    prefix: "&a[Captain]"
+    kills: 150
+    default: false
+  general:
+    name: "General"
+    prefix: "&b[General]"
+    kills: 190
+    default: false
+  lieutenant:
+    name: "Lieutenant"
+    prefix: "&c[Lieutenant]"
+    kills: 580
+    default: false
