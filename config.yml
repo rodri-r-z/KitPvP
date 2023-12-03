@@ -6,7 +6,15 @@
 # ╚═╝░░╚═╝╚═╝░░░╚═╝░░░  ╚═╝░░░░░░░░╚═╝░░░╚═╝░░░░░
 # Plugin made by: Rodrigo R.
 
-mongo_db_uri: "mongodb://127.0.0.1:27017"  # MongoDB URI configuration
+# MySQL Database Config
+database:
+  driver: "mysql" # You can use: mysql, mariadb
+  host: "localhost"
+  user: "root"
+  password: "root"
+  port: 3306
+  database: kitpvp
+  
 prefix: "&6&lKitPvP &r&8»&7"  # Prefix used in various messages
 player_killed_msg: "%PREFIX% %VICTIM% has been killed by %KILLER%."  # Player killed message
 player_death_msg: "%PREFIX% %VICTIM% has died."  # Player death message
